@@ -214,7 +214,7 @@ public class MainView extends javax.swing.JFrame {
         labelApp.setForeground(new java.awt.Color(255, 255, 255));
         labelApp.setText("APPLICATION");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/ktyudha/Downloads/rsz_1cropped-logo-dhagrafis.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ico/rsz_1cropped-logo-dhagrafis.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Kailasa", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
