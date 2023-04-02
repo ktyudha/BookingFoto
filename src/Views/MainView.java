@@ -22,8 +22,20 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import java.util.*;
 import javax.swing.table.JTableHeader;
+
+class Pembayaran {
+    String nama;
+    int noAbsen;
+    int jumlahBayar;
+    
+    public Pembayaran(String nama, int noAbsen, int jumlahBayar){
+        this.nama = nama;
+        this.noAbsen = noAbsen;
+        this.jumlahBayar = jumlahBayar;
+    }
+}
+
 
 /**
  *
@@ -38,11 +50,14 @@ public class MainView extends javax.swing.JFrame {
     int total;
 
     List<Paket> packages = new ArrayList();
+    List<Pembayaran> pembayarans = new ArrayList();
 
     DefaultTableModel model;
 
     public MainView() {
         initComponents();
+        
+        
 
         setExtendedState(JFrame.MAXIMIZED_HORIZ);
         setVisible(true);
@@ -62,7 +77,7 @@ public class MainView extends javax.swing.JFrame {
         String nCountBook = Integer.toString(countBook);
         countDashBook.setText(nCountBook);
 
-        tampilkan();
+        loadListBooking();
         loadLocation();
         loadCategory();
 
@@ -73,7 +88,8 @@ public class MainView extends javax.swing.JFrame {
 
         for (int i = 0; i < locations.size(); i++) {
             Location location = locations.get(i);
-            address.addItem(location.name);
+//            address.addItem(location.name);
+System.out.println(""+location.name);
         }
     }
 
@@ -95,6 +111,28 @@ public class MainView extends javax.swing.JFrame {
             paket.addItem(pkt.name);
         }
 
+    }
+
+    private void loadListBook() {
+        mainDash.removeAll();
+        mainDash.repaint();
+        mainDash.revalidate();
+
+        //add panel
+        mainDash.add(listMain);
+        mainDash.repaint();
+        mainDash.revalidate();
+    }
+    
+    private void loadMainBook() {
+        mainDash.removeAll();
+        mainDash.repaint();
+        mainDash.revalidate();
+
+        //add panel
+        mainDash.add(bookingMain);
+        mainDash.repaint();
+        mainDash.revalidate();
     }
 
     /**
@@ -465,6 +503,7 @@ public class MainView extends javax.swing.JFrame {
         totPrice.setText("-");
 
         btnOrder.setBackground(new java.awt.Color(9, 132, 227));
+        btnOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnOrder.setText("Pesan");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -494,9 +533,9 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(bookingMainLayout.createSequentialGroup()
                 .addGap(276, 276, 276)
                 .addComponent(jLabel1)
-                .addGap(0, 308, Short.MAX_VALUE))
-            .addGroup(bookingMainLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookingMainLayout.createSequentialGroup()
+                .addContainerGap(237, Short.MAX_VALUE)
                 .addGroup(bookingMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bookingMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,17 +547,16 @@ public class MainView extends javax.swing.JFrame {
                         .addComponent(labelTotPrize)
                         .addComponent(labelPhone)
                         .addComponent(labelAddress)))
-                .addGap(20, 20, 20)
-                .addGroup(bookingMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(bookingMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(address, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(time)
-                        .addComponent(event, 0, 170, Short.MAX_VALUE)
-                        .addComponent(paket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(detAddress, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(totPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(bookingMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(address, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(time)
+                    .addComponent(event, 0, 170, Short.MAX_VALUE)
+                    .addComponent(paket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(detAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(totPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(phone))
                 .addGap(54, 54, 54)
                 .addGroup(bookingMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -582,7 +620,7 @@ public class MainView extends javax.swing.JFrame {
                         .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
                 .addComponent(btnOrder)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         mainDash.add(bookingMain, "card3");
@@ -619,6 +657,9 @@ public class MainView extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listBooking);
 
+        btnDelete.setBackground(new java.awt.Color(255, 51, 51));
+        btnDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -626,6 +667,8 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(255, 204, 0));
+        btnEdit.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -675,7 +718,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(bodyPanelLayout.createSequentialGroup()
                 .addComponent(menuDash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(mainDash, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                .addComponent(mainDash, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE))
         );
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -713,30 +756,13 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
         // TODO add your handling code here:
-
-        //remove panel
-        mainDash.removeAll();
-        mainDash.repaint();
-        mainDash.revalidate();
-
-        //add panel
-        mainDash.add(bookingMain);
-        mainDash.repaint();
-        mainDash.revalidate();
+        loadMainBook();
+       
     }//GEN-LAST:event_btnBookingActionPerformed
 
     private void btnListBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListBookActionPerformed
         // TODO add your handling code here:
-
-        //remove panel
-        mainDash.removeAll();
-        mainDash.repaint();
-        mainDash.revalidate();
-
-        //add panel
-        mainDash.add(listMain);
-        mainDash.repaint();
-        mainDash.revalidate();
+        loadListBook();
     }//GEN-LAST:event_btnListBookActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -745,7 +771,8 @@ public class MainView extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog(this, "Anda yakin keluar?", "PERINGATAN", dialogBtn);
 
         if (dialogResult == 0) {
-            System.exit(0);
+            this.dispose();
+            new LoginView().setVisible(true);
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
@@ -808,16 +835,9 @@ public class MainView extends javax.swing.JFrame {
             preparedStmt.execute();
             conn.close();
 
-            mainDash.removeAll();
-            mainDash.repaint();
-            mainDash.revalidate();
-
-            //add panel
-            mainDash.add(listMain);
-            mainDash.repaint();
-            mainDash.revalidate();
-
             JOptionPane.showMessageDialog(null, "Anda berhasil Booking !!\nsegera lakukan pembayaran");
+            loadListBooking();
+            loadListBook();
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -826,16 +846,6 @@ public class MainView extends javax.swing.JFrame {
     private void listBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listBookingMouseClicked
         // TODO add your handling code here:
         int i = listBooking.getSelectedRow();
-
-        if (i >= 0) {
-            name.setText(model.getValueAt(i, 1).toString());
-            phone.setText(model.getValueAt(i, 2).toString());
-            address.setSelectedItem(model.getValueAt(i, 3));
-            detAddress.setText(model.getValueAt(i, 4).toString());
-            time.setText(model.getValueAt(i, 5).toString());
-            event.setSelectedItem(model.getValueAt(i, 6));
-            paket.setSelectedItem(model.getValueAt(i, 7));
-        }
 
     }//GEN-LAST:event_listBookingMouseClicked
 
@@ -856,6 +866,8 @@ public class MainView extends javax.swing.JFrame {
                 PreparedStatement preparedStmt = conn.prepareStatement(sql);
                 preparedStmt.execute();
                 conn.close();
+                loadListBooking();
+                loadListBook();
 
             } catch (SQLException e) {
                 System.out.println("gagal menghapus");
@@ -868,14 +880,19 @@ public class MainView extends javax.swing.JFrame {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
 
-        mainDash.removeAll();
-        mainDash.repaint();
-        mainDash.revalidate();
+        int i = listBooking.getSelectedRow();
 
-        //add panel
-        mainDash.add(bookingMain);
-        mainDash.repaint();
-        mainDash.revalidate();
+        if (i >= 0) {
+            name.setText(model.getValueAt(i, 1).toString());
+            phone.setText(model.getValueAt(i, 2).toString());
+            address.setSelectedItem(model.getValueAt(i, 3));
+            detAddress.setText(model.getValueAt(i, 4).toString());
+            time.setText(model.getValueAt(i, 5).toString());
+            event.setSelectedItem(model.getValueAt(i, 6));
+            paket.setSelectedItem(model.getValueAt(i, 7));
+        }
+        
+        loadMainBook();
 
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -899,12 +916,13 @@ public class MainView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainView().setVisible(true);
+                new LoginView().setVisible(true);
+//                new MainView().setVisible(true);
             }
         });
     }
 
-    private void tampilkan() {
+    private void loadListBooking() {
         int row = listBooking.getRowCount();
         for (int i = 0; i < row; i++) {
             model.removeRow(0);
@@ -916,9 +934,9 @@ public class MainView extends javax.swing.JFrame {
 
             ResultSet rs = s.executeQuery(" SELECT *  FROM orders INNER JOIN users ON orders.user_id = users.id INNER JOIN categories ON orders.category_id = categories.id INNER JOIN pakets ON orders.paket_id = pakets.id INNER JOIN locations ON orders.location_id = locations.id ORDER BY orders.id DESC");
             while (rs.next()) {
-
+                
                 String data[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(24), rs.getString(4), rs.getString(5), rs.getString(17), rs.getString(19)};
-                model.addRow(data);
+                model.addRow(data); 
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);

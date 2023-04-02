@@ -31,7 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="bodyPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="bodyPanel" alignment="0" pref="603" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,7 +52,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="menuDash" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="mainDash" pref="732" max="32767" attributes="0"/>
+                  <Component id="mainDash" pref="669" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -502,10 +502,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="308" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="237" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btnOrder" min="-2" pref="94" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -519,18 +519,16 @@
                                   <Component id="labelAddress" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="address" max="32767" attributes="0"/>
-                                  <Component id="time" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="event" alignment="0" pref="170" max="32767" attributes="0"/>
-                                  <Component id="paket" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="detAddress" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="name" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="totPrice" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="phone" min="-2" pref="182" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="address" max="32767" attributes="0"/>
+                              <Component id="time" alignment="0" max="32767" attributes="0"/>
+                              <Component id="event" alignment="0" pref="170" max="32767" attributes="0"/>
+                              <Component id="paket" alignment="0" max="32767" attributes="0"/>
+                              <Component id="detAddress" alignment="1" max="32767" attributes="0"/>
+                              <Component id="name" alignment="1" max="32767" attributes="0"/>
+                              <Component id="totPrice" alignment="0" max="32767" attributes="0"/>
+                              <Component id="phone" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -613,7 +611,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnOrder" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="146" max="32767" attributes="0"/>
+                          <EmptySpace pref="143" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -707,6 +705,9 @@
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e3" green="84" red="9" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Pesan"/>
                   </Properties>
@@ -858,6 +859,15 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnDelete">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Helvetica Neue" size="13" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
                   <Events>
@@ -866,6 +876,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnEdit">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="cc" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Helvetica Neue" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Edit"/>
                   </Properties>
                   <Events>
