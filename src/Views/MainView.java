@@ -24,17 +24,6 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.table.JTableHeader;
 
-class Pembayaran {
-    String nama;
-    int noAbsen;
-    int jumlahBayar;
-    
-    public Pembayaran(String nama, int noAbsen, int jumlahBayar){
-        this.nama = nama;
-        this.noAbsen = noAbsen;
-        this.jumlahBayar = jumlahBayar;
-    }
-}
 
 
 /**
@@ -48,9 +37,9 @@ public class MainView extends javax.swing.JFrame {
     int selectedLocationId;
     int selectedPackageId;
     int total;
-
+    
     List<Paket> packages = new ArrayList();
-    List<Pembayaran> pembayarans = new ArrayList();
+    AboutView about = new AboutView();
 
     DefaultTableModel model;
 
@@ -88,8 +77,7 @@ public class MainView extends javax.swing.JFrame {
 
         for (int i = 0; i < locations.size(); i++) {
             Location location = locations.get(i);
-//            address.addItem(location.name);
-System.out.println(""+location.name);
+            address.addItem(location.name);
         }
     }
 
@@ -155,6 +143,7 @@ System.out.println(""+location.name);
         labelApp = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnPortofolio = new javax.swing.JButton();
         mainDash = new javax.swing.JPanel();
         dashMain = new javax.swing.JPanel();
         dashboard = new javax.swing.JLabel();
@@ -258,6 +247,13 @@ System.out.println(""+location.name);
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DHAGRAFIS");
 
+        btnPortofolio.setText("Portofolio");
+        btnPortofolio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPortofolioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuDashLayout = new javax.swing.GroupLayout(menuDash);
         menuDash.setLayout(menuDashLayout);
         menuDashLayout.setHorizontalGroup(
@@ -270,11 +266,13 @@ System.out.println(""+location.name);
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(btnDash)
-                            .addGroup(menuDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAbout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnListBook, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(menuDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnPortofolio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.CENTER, menuDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAbout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnListBook, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(menuDashLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(menuDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,8 +287,10 @@ System.out.println(""+location.name);
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(62, 62, 62)
+                .addGap(33, 33, 33)
                 .addComponent(btnDash)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPortofolio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelOrder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -734,7 +734,7 @@ System.out.println(""+location.name);
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
         );
 
         pack();
@@ -774,12 +774,13 @@ System.out.println(""+location.name);
             this.dispose();
             new LoginView().setVisible(true);
         }
+        about.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
         // TODO add your handling code here:
 
-        AboutView about = new AboutView();
+       
         about.setVisible(true);
     }//GEN-LAST:event_btnAboutActionPerformed
 
@@ -908,6 +909,12 @@ System.out.println(""+location.name);
         // TODO add your handling code here:
     }//GEN-LAST:event_timeActionPerformed
 
+    private void btnPortofolioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortofolioActionPerformed
+        // TODO add your handling code here:
+        PortfolioView prtfl = new PortfolioView();
+        prtfl.setVisible(true);
+    }//GEN-LAST:event_btnPortofolioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -955,6 +962,7 @@ System.out.println(""+location.name);
     private javax.swing.JButton btnListBook;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnPortofolio;
     private javax.swing.JLabel countDashBook;
     private javax.swing.JLabel countDashBook1;
     private javax.swing.JLabel countDashBook2;

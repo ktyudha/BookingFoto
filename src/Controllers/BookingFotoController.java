@@ -28,30 +28,24 @@ public class BookingFotoController {
             Statement stat = conn.createStatement();
             ResultSet res = stat.executeQuery(sql);
             
-            String[] args = {"Andi", "SUep","BEJRE"};
+            
             Location placeholderLocation = new Location();
             placeholderLocation.id = 0;
-            for (int i = 0; i < args.length; i++) {
-                 placeholderLocation.name = args[i];
-                 locations.add(placeholderLocation);
-                 
-            }
-           
             placeholderLocation.name = "-- Pilih Location --";
             locations.add(placeholderLocation);
 
-//            while (res.next()) {
-//                int id = res.getInt("id");
-//                String name = res.getString("name");
-//                int price = res.getInt("price");
-//
-//                Location location = new Location();
-//                location.id = id;
-//                location.name = name;
-//                location.price = price;
-//                locations.add(location);
-//
-//            }
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                int price = res.getInt("price");
+
+                Location location = new Location();
+                location.id = id;
+                location.name = name;
+                location.price = price;
+                locations.add(location);
+
+            }
 
         } catch (Exception e) {
             System.out.println("Data tidak tersedia");
